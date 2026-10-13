@@ -1,0 +1,105 @@
+## lecture 4
+
+generate a basic html page with the title  "home  and  an <h1> heading that say " home page  and comment.......
+
+
+
+
+## lecture 5
+
+generate a simple html page with a div, heading , paragraph , populate the tags with some content and use proper comment......
+
+
+
+
+## lecture 6
+
+anchor used for visit in different site 
+
+generate a simple html page with a div, heading , paragraph and a link to google.com on a new tab and another link to anywhere on a different page and another link on the same page......
+
+
+
+
+## lecture 7 
+
+Form with Ai
+
+generate a simple html page that include a login form inside a </div> the form should contain  1 a heading that say "login " 2  a paragraph prompting user  to enter there credentials 3 input field for email and password 5. a "login" button
+
+
+Generate a simple HTML login page.
+The page should be centered both vertically and horizontally using CSS.
+Add a <div> container with a white background, padding, rounded corners, and a subtle shadow.
+Inside the container, create a <form> that includes:
+A heading that says "Login"
+A paragraph prompting the user to enter their credentials
+An input field for email
+An input field for password
+A "Login" button
+Style the page using internal CSS:
+Use a light gray background for the body
+Center everything using flexbox
+Make inputs full width with padding
+Style the button with a green background and hover effect
+
+
+
+## lecture 8
+Table -> id name email
+
+Write a simple HTML page that displays a table with 1 row of data. The table should have 3 columns and cover in rectangular box: First Name, Last Name, and Email. Include the table headers and one row with sample data: John, Doe, john.doe@example.com. Add basic HTML structure with head, title, and body tags. Use border="1" for the table......
+
+generate a simple html page  that include a table inside a <div> the table should contain the list of 3 user information without any styling or CSS also comment on each line.....
+
+
+
+## lecture 09
+image tag
+
+generate  a simple html Page with div heading that include 2 image inside a <div> set width of the image to be 300 do not use style CSS....
+
+
+## lecture 10
+
+generate a simple html page with a div  heading  that include  7 unorder list  inside a <div>do not use style CSS.....
+
+
+## lecture 11
+generate a simple html page with header main and footer inside the main  section include semantic contact with from fact for name e mail id  and mess age  plus summit button  do not use any style in CSS....
+
+
+## lecture 12
+
+what is CSS??
+
+
+Here’s the written form of the slide:
+
+*CSS + AI PROMPT*
+
+*WHAT IS CSS?*
+
+CSS stands for *Cascading Style Sheets*.
+
+It’s the language we use to *style HTML content* things like colors, spacing, borders, and layout.
+
+- *color* – text color
+- *background-color* – element background  
+- *padding* – space inside an element
+- *margin* – space outside an element
+- *border* – line around the element
+- *font-size* – size of the text
+
+*See more example:* https://www.w3.org/Style/CSS/all-properties.en.html#list
+
+The Last Code Bender
+
+
+## Lecture 13
+
+generate external styling .CSS file in anew CSS folder and style this html page.....
+
+## Lecture 14
+
+generate external styling .CSS file in a new CSS folder and style this html......
