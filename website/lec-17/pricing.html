@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Plans - Software Development Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+
+        .toggle-switch {
+            background-color: var(--bg-white);
+            border: 2px solid var(--border-color);
+            border-radius: 2rem;
+            padding: 0.3rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .toggle-switch button {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch button.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 1.5rem;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background-color: var(--bg-white);
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-display {
+            margin-bottom: 2rem;
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .price-period {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-left: 0.5rem;
+        }
+
+        .price-note {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .features-list li {
+            padding: 0.75rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            color: var(--text-light);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .features-list li.unavailable {
+            color: #d1d5db;
+            opacity: 0.6;
+        }
+
+        .features-list li.unavailable:before {
+            content: "✕";
+            color: #ef4444;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button.accent {
+            background-color: var(--accent-color);
+        }
+
+        .cta-button.accent:hover {
+            background-color: #d97706;
+        }
+
+        .comparison-section {
+            background-color: var(--bg-white);
+            padding: 3rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        .feature-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .faq-section {
+            background-color: var(--bg-white);
+            padding: 3rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-color);
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .value-prop {
+            background-color: var(--bg-white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .value-prop:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-prop h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-prop p {
+            color: var(--text-light);
+        }
+
+        .contact-cta {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-cta h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+
+            .comparison-section {
+                padding: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            table,
+            th,
+            td {
+                font-size: 0.9rem;
+                padding: 0.75rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>DevSolutions</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="services.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <section class="hero">
+            <h2>Transparent, Flexible Pricing Plans</h2>
+            <p>Choose the perfect plan for your project. All plans include professional quality, dedication to excellence, and ongoing support.</p>
+        </section>
+    </header>
+
+    <main>
+        <!-- Pricing Plans Section -->
+        <section>
+            <h2>Pricing Heading</h2>
+            <p class="section-subtitle">Select the plan that best fits your project needs and budget</p>
+
+            <div class="pricing-cards">
+                <!-- Startup Plan -->
+                <article class="pricing-card">
+                    <h3 class="plan-name">🚀 Startup</h3>
+                    <p class="plan-description">Perfect for small projects and MVPs</p>
+                    <div class="price-display">
+                        <span class="price-amount"><span class="price-currency">$</span>2,999</span>
+                        <span class="price-period">one-time</span>
+                        <p class="price-note">Typical project: 2-3 weeks</p>
+                    </div>
+                    <ul class="features-list">
+                        <li>Single Page Application</li>
+                        <li>Responsive Mobile Design</li>
+                        <li>Basic SEO Optimization</li>
+                        <li>1 Month Support</li>
+                        <li>Up to 5 Revisions</li>
+                        <li class="unavailable">Custom API Integration</li>
+                        <li class="unavailable">Database Design</li>
+                        <li class="unavailable">Advanced Security Features</li>
+                    </ul>
+                    <button class="cta-button">Get Started</button>
+                </article>
+
+                <!-- Professional Plan (Featured) -->
+                <article class="pricing-card featured">
+                    <div class="featured-badge">Most Popular</div>
+                    <h3 class="plan-name">💼 Professional</h3>
+                    <p class="plan-description">Ideal for growing businesses and complex projects</p>
+                    <div class="price-display">
+                        <span class="price-amount"><span class="price-currency">$</span>7,999</span>
+                        <span class="price-period">one-time</span>
+                        <p class="price-note">Typical project: 4-6 weeks</p>
+                    </div>
+                    <ul class="features-list">
+                        <li>Full-Stack Web Application</li>
+                        <li>Professional UI/UX Design</li>
+                        <li>RESTful API Development</li>
+                        <li>Database Design & Integration</li>
+                        <li>Advanced Responsive Design</li>
+                        <li>3 Months Priority Support</li>
+                        <li>Unlimited Revisions</li>
+                        <li class="unavailable">Mobile App Development</li>
+                    </ul>
+                    <button class="cta-button accent">Get Started</button>
+                </article>
+
+                <!-- Enterprise Plan -->
+                <article class="pricing-card">
+                    <h3 class="plan-name">🏢 Enterprise</h3>
+                    <p class="plan-description">Complete solutions for large-scale projects</p>
+                    <div class="price-display">
+                        <span class="price-amount"><span class="price-currency">$</span>15,000<span class="price-period">+</span></span>
+                        <p class="price-note">Custom pricing based on scope</p>
+                    </div>
+                    <ul class="features-list">
+                        <li>Complete Custom Solution</li>
+                        <li>Web & Mobile App Development</li>
+                        <li>Advanced Backend Architecture</li>
+                        <li>GraphQL or REST API</li>
+                        <li>Complex Database Design</li>
+                        <li>DevOps & Cloud Setup</li>
+                        <li>12 Months Support & Maintenance</li>
+                        <li>Dedicated Account Manager</li>
+                    </ul>
+                    <button class="cta-button">Contact Sales</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- Value Proposition Section -->
+        <section>
+            <h2>Why Our Pricing Is Worth It</h2>
+            <p class="section-subtitle">Get exceptional value and quality with every project</p>
+            
+            <div class="value-props">
+                <article class="value-prop">
+                    <h3>✨ Premium Quality</h3>
+                    <p>Clean, maintainable code using industry best practices. Every project is built for scalability and longevity, ensuring your investment pays off long-term.</p>
+                </article>
+
+                <article class="value-prop">
+                    <h3>🎯 Transparent Pricing</h3>
+                    <p>No hidden fees or surprise costs. You know exactly what you're paying for and what you'll receive. Clear scope definitions and milestone-based delivery.</p>
+                </article>
+
+                <article class="value-prop">
+                    <h3>⚡ Fast Turnaround</h3>
+                    <p>Efficient development process without compromising quality. We deliver projects on schedule while maintaining exceptional standards.</p>
+                </article>
+
+                <article class="value-prop">
+                    <h3>🤝 Dedicated Support</h3>
+                    <p>Your success is our priority. Ongoing support, maintenance, and continuous improvements included in all plans to ensure your application thrives.</p>
+                </article>
+
+                <article class="value-prop">
+                    <h3>🔒 Security Included</h3>
+                    <p>Industry-standard security practices built into every project. Data protection, secure authentication, and compliance with regulations included.</p>
+                </article>
+
+                <article class="value-prop">
+                    <h3>📈 Future-Proof</h3>
+                    <p>Modern technologies and frameworks that will be relevant for years. Built with flexibility to scale as your business grows.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Comparison Table Section -->
+        <section>
+            <h2>Plan Comparison</h2>
+            <p class="section-subtitle">Detailed feature comparison across all pricing tiers</p>
+            
+            <div class="comparison-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Startup</th>
+                            <th>Professional</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="feature-name">Project Duration</td>
+                            <td>2-3 weeks</td>
+                            <td>4-6 weeks</td>
+                            <td>Custom timeline</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Design & UI/UX</td>
+                            <td>Template-based</td>
+                            <td>Custom professional design</td>
+                            <td>Premium custom design</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Pages/Features</td>
+                            <td>3-5 pages</td>
+                            <td>Unlimited pages</td>
+                            <td>Complete application</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Responsive Design</td>
+                            <td>Mobile-friendly</td>
+                            <td>Advanced responsive</td>
+                            <td>Fully responsive & optimized</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Backend Development</td>
+                            <td>Basic backend</td>
+                            <td>Full backend with API</td>
+                            <td>Advanced architecture</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Database</td>
+                            <td>Simple setup</td>
+                            <td>Custom design & optimization</td>
+                            <td>Complex architecture</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">API Integration</td>
+                            <td>Basic integration</td>
+                            <td>Custom REST API</td>
+                            <td>REST or GraphQL</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Mobile App</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>iOS & Android</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">DevOps & Cloud</td>
+                            <td>Basic hosting setup</td>
+                            <td>Standard deployment</td>
+                            <td>Full DevOps setup</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">SEO Optimization</td>
+                            <td>Basic</td>
+                            <td>Advanced</td>
+                            <td>Complete optimization</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Testing & QA</td>
+                            <td>Basic testing</td>
+                            <td>Comprehensive testing</td>
+                            <td>Extensive testing suite</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Support Duration</td>
+                            <td>1 month</td>
+                            <td>3 months</td>
+                            <td>12 months</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Revisions</td>
+                            <td>5 revisions</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Maintenance & Updates</td>
+                            <td>Not included</td>
+                            <td>3 months included</td>
+                            <td>12 months included</td>
+                        </tr>
+                        <tr>
+                            <td class="feature-name">Priority Support</td>
+                            <td>Email support</td>
+                            <td>Email + phone</td>
+                            <td>Dedicated manager</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section>
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common questions about our pricing and services</p>
+            
+            <div class="faq-section">
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ Can I customize a pricing plan?</h3>
+                    <p class="faq-answer">Absolutely! All three plans can be customized based on your specific requirements. Contact our sales team to discuss modifications to any plan, additional features, or hybrid solutions that better fit your project scope and budget.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ What payment methods do you accept?</h3>
+                    <p class="faq-answer">We accept all major credit cards (Visa, Mastercard, American Express), bank transfers, and flexible payment arrangements. For Enterprise plans, we can discuss custom payment schedules and terms.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ Is there a deposit or down payment required?</h3>
+                    <p class="faq-answer">Yes, we require a 50% deposit to start the project, with the remaining balance due upon completion. For longer projects, we can arrange milestone-based payments for easier cash flow management.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ What happens after my support period ends?</h3>
+                    <p class="faq-answer">After the included support period, you can extend support at discounted rates (typically $500-$1000/month depending on plan). We're here to help your application grow with your business long-term.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ Do you offer refunds if I'm not satisfied?</h3>
+                    <p class="faq-answer">We're confident in our work and strive for 100% client satisfaction. If there are issues with the delivered project not meeting agreed specifications, we'll work to fix them at no additional cost. We don't offer refunds, but we ensure unlimited revisions until you're happy.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ How long does each plan typically take?</h3>
+                    <p class="faq-answer">Startup plans: 2-3 weeks, Professional plans: 4-6 weeks, Enterprise plans: custom timeline (typically 8-12 weeks+). Timelines depend on project complexity, revisions, and your availability for feedback.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ Can I upgrade my plan later?</h3>
+                    <p class="faq-answer">Yes! If you start with a Startup plan and need more features, you can upgrade to Professional or Enterprise. The upgrade cost will be adjusted based on the work already completed.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ What's included in the post-project support?</h3>
+                    <p class="faq-answer">Support includes bug fixes, minor updates, security patches, and technical assistance. Major new features or significant modifications may require additional fees. We'll provide detailed support scope during project kickoff.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ Do you work with agencies and resellers?</h3>
+                    <p class="faq-answer">Yes! We offer special pricing and white-label solutions for agencies, development firms, and resellers. Contact our sales team to discuss partnership opportunities and volume discounts.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ What about maintenance and hosting costs?</h3>
+                    <p class="faq-answer">Project costs are separate from hosting and maintenance. We can help set up hosting (typically $50-$500/month depending on needs) or work with your existing hosting provider. Maintenance plans start at $500/month for ongoing support.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Value-Added Services Section -->
+        <section>
+            <h2>Additional Services Available</h2>
+            <p class="section-subtitle">Enhance your project with these valuable add-ons</p>
+            
+            <div class="value-props">
+                <article class="value-prop">
+                    <h3>📱 Mobile App Development</h3>
+                    <p>Native iOS/Android or cross-platform mobile applications. Starting at $5,000. Perfect complement to web applications.</p>
+                </article>
+
+                <article class="value-prop">
+                    <h3>🔍 SEO & Performance Audit</h3>
+                    <p>Comprehensive analysis and optimization recommendations. $1,500 one-time. Improve search rankings and user experience.</p>
+                </article>
+
+                <article class="value-prop">
+                    <h3>🎓 Team Training & Documentation</h3>
+                    <p>Train your team to maintain and manage your application. $2,000 for comprehensive training package included with Enterprise.</p>
+                </article>
+
+                <article class="value-prop">
+                    <h3>🔐 Security Audit & Penetration Testing</h3>
+                    <p>Identify and fix vulnerabilities. $3,000. Essential for applications handling sensitive data.</p>
+                </article>
+
+                <article class="value-prop">
+                    <h3>📊 Advanced Analytics Setup</h3>
+                    <p>Implement tracking, reporting, and insights. $1,000. Understand your users better and make data-driven decisions.</p>
+                </article>
+
+                <article class="value-prop">
+                    <h3>🔄 Migration & Integration Services</h3>
+                    <p>Migrate from legacy systems or integrate with third-party services. Custom pricing based on complexity.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact CTA Section -->
+        <section class="contact-cta">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Let's discuss which plan is right for you. Schedule a free consultation with our team today.</p>
+            <button class="cta-button" style="background-color: var(--accent-color); max-width: 200px; margin: 0 auto;">Schedule Consultation</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DevSolutions. All rights reserved. | Privacy Policy | Terms of Service</p>
+        <p>Contact: hello@devsolutions.com | Phone: (555) 123-4567</p>
+    </footer>
+</body>
+</html>

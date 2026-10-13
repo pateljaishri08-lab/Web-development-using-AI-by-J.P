@@ -1,0 +1,123 @@
+/* General Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Container */
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Heading */
+.login-container h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Paragraph */
+.login-container p {
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label Styling */
+label {
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Input Field Styling */
+input[type="email"],
+input[type="password"] {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Input Focus State */
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+    background-color: #f9f9ff;
+}
+
+/* Button Styling */
+button[type="submit"] {
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+/* Button Hover State */
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Button Active State */
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+    }
+    
+    .login-container h1 {
+        font-size: 24px;
+    }
+    
+    button[type="submit"] {
+        padding: 10px;
+        font-size: 14px;
+    }
+}

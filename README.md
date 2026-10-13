@@ -1,1 +1,0 @@
-# Web-development-using-AI-by-J.P

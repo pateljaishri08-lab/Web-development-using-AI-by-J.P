@@ -1,0 +1,191 @@
+/* UI-only iPhone-style calculator (no JS) */
+
+:root {
+  --bg: #0b0b0c;
+  --panel: #000000;
+  --text: rgba(255, 255, 255, 0.96);
+  --text-dim: rgba(255, 255, 255, 0.6);
+
+  --key: #333336;
+  --key-pressed: #4a4a4f;
+  --key-util: #a5a5a7;
+  --key-util-text: #121214;
+  --key-op: #ff9f0a;
+  --key-op-pressed: #ffc06a;
+
+  --radius: 28px;
+  --gap: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 800px at 50% 20%, #141416 0%, var(--bg) 55%, #070708 100%);
+  color: var(--text);
+}
+
+.stage {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 28px 16px;
+}
+
+.brand {
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 12px;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.65);
+}
+
+.calculator {
+  width: min(380px, 100%);
+  background: linear-gradient(180deg, #0a0a0b 0%, var(--panel) 55%, #000 100%);
+  border-radius: calc(var(--radius) + 10px);
+  padding: 22px 18px 18px;
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.65),
+    0 10px 30px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.display {
+  padding: 18px 10px 12px;
+  min-height: 120px;
+  display: grid;
+  align-content: end;
+  justify-items: end;
+  gap: 8px;
+}
+
+.display__top {
+  height: 18px;
+  width: 100%;
+  color: var(--text-dim);
+  text-align: right;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+.display__value {
+  font-weight: 500;
+  font-size: clamp(44px, 8vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  padding-right: 2px;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  padding-top: 10px;
+}
+
+.key {
+  appearance: none;
+  border: 0;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--text);
+  background: var(--key);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    transform 120ms ease,
+    filter 120ms ease,
+    background-color 120ms ease;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -10px 22px rgba(0, 0, 0, 0.35);
+}
+
+.key:focus-visible {
+  outline: 3px solid rgba(255, 159, 10, 0.55);
+  outline-offset: 3px;
+}
+
+.key:hover {
+  filter: brightness(1.06);
+}
+
+.key:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+.key--utility {
+  background: var(--key-util);
+  color: var(--key-util-text);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -10px 22px rgba(0, 0, 0, 0.22);
+}
+
+.key--utility:active {
+  background: color-mix(in srgb, var(--key-util) 80%, #fff 20%);
+}
+
+.key--op {
+  background: var(--key-op);
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -10px 22px rgba(0, 0, 0, 0.22);
+}
+
+.key--op:active {
+  background: var(--key-op-pressed);
+}
+
+.key--zero {
+  grid-column: span 2;
+  aspect-ratio: auto;
+  border-radius: 999px;
+  justify-content: start;
+  padding-left: 28px;
+}
+
+@media (max-width: 360px) {
+  :root {
+    --gap: 12px;
+  }
+
+  .calculator {
+    padding: 20px 16px 16px;
+  }
+
+  .display {
+    min-height: 110px;
+  }
+
+  .key {
+    font-size: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .key {
+    transition: none;
+  }
+}
+

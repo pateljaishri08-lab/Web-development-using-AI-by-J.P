@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Admission Eligibility Checker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: left;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .info-box li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            color: #999;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 University Admission Checker</h1>
+        <p class="subtitle">Software Engineering Program</p>
+        
+        <div class="info-box">
+            <h3>Program Requirements:</h3>
+            <ul>
+                <li>Minimum Age: 18 years</li>
+                <li>Minimum GPA: 3.0</li>
+                <li>Minimum Math Score: 70/100</li>
+                <li>Minimum Science Score: 70/100</li>
+                <li>Minimum English Score: 65/100</li>
+            </ul>
+        </div>
+
+        <p style="color: #555; margin: 20px 0;">Click the button below to start your admission eligibility check. Please have your information ready.</p>
+
+        <button onclick="startApplication()">Start Application Process</button>
+
+        <!-- Results Display Area -->
+        <div id="resultsContainer" style="display: none; margin-top: 30px; text-align: left; background: #f9f9f9; padding: 20px; border-radius: 5px;">
+            <div id="resultsContent"></div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 University Admission System. All rights reserved.</p>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript file -->
+    <script src="university-admission-eligibility.js"></script>
+
+    <!-- Start application function -->
+    <script>
+        function startApplication() {
+            // Call the main program from the linked JavaScript file
+            checkAdmissionEligibility();
+        }
+    </script>
+</body>
+</html>

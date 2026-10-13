@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Software Development Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-form {
+            background-color: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-align: left;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background-color: rgba(37, 99, 235, 0.02);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            margin-bottom: 0;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background-color: var(--bg-white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .info-card a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .info-card a:hover {
+            color: var(--accent-color);
+        }
+
+        .response-time {
+            background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        .response-time h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .response-time p {
+            opacity: 0.95;
+        }
+
+        .office-locations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .office-card {
+            background-color: var(--bg-white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .office-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .office-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .office-card p {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .connect-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .method-card {
+            background-color: var(--bg-white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .method-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .method-card p {
+            color: var(--text-light);
+        }
+
+        .faq-section {
+            background-color: var(--bg-white);
+            padding: 3rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-color);
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial {
+            background-color: var(--bg-white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .stars {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial p {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .client-details h4 {
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+
+        .client-title {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        .success-message {
+            display: none;
+            background-color: var(--success-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>DevSolutions</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <section class="hero">
+            <h2>Get In Touch</h2>
+            <p>Have a project in mind or questions about our services? We're here to help. Reach out to us today and let's discuss how we can bring your vision to life.</p>
+        </section>
+    </header>
+
+    <main>
+        <!-- Contact Form Section -->
+        <section>
+            <h2>Contact Us</h2>
+            <p class="section-subtitle">Send us a message and we'll respond as quickly as possible</p>
+            
+            <div class="contact-container">
+                <form class="contact-form" id="contactForm">
+                    <div class="success-message" id="successMessage">
+                        ✓ Thank you! Your message has been sent successfully. We'll get back to you soon!
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="company" placeholder="Your company name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="mobile-app">Mobile App Development</option>
+                            <option value="ui-ux">UI/UX Design</option>
+                            <option value="api-development">API Development</option>
+                            <option value="consulting">Technical Consulting</option>
+                            <option value="support">Support & Maintenance</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us about your project or question..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>How did you hear about us?</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="google" name="source" value="google">
+                                <label for="google">Google</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="social" name="source" value="social">
+                                <label for="social">Social Media</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="referral" name="source" value="referral">
+                                <label for="referral">Referral</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="portfolio" name="source" value="portfolio">
+                                <label for="portfolio">Portfolio</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">I agree to the privacy policy and terms of service</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <article class="info-card">
+                        <h3>📧 Email</h3>
+                        <p>
+                            <a href="mailto:hello@devsolutions.com">hello@devsolutions.com</a>
+                        </p>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">For general inquiries and project discussions</p>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>📞 Phone</h3>
+                        <p>
+                            <a href="tel:+15551234567">(555) 123-4567</a>
+                        </p>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">Monday - Friday, 9:00 AM - 6:00 PM EST</p>
+                    </article>
+
+                    <article class="info-card">
+                        <h3>💼 For Enterprise Clients</h3>
+                        <p>
+                            <a href="mailto:enterprise@devsolutions.com">enterprise@devsolutions.com</a>
+                        </p>
+                        <p style="font-size: 0.95rem; margin-top: 0.5rem;">Dedicated account manager for large-scale projects</p>
+                    </article>
+
+                    <article class="response-time">
+                        <h4>⏱️ Response Time</h4>
+                        <p>We typically respond to inquiries within 24 business hours</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Office Locations Section -->
+        <section>
+            <h2>Our Locations</h2>
+            <p class="section-subtitle">Connect with us at any of our offices around the world</p>
+            
+            <div class="office-locations">
+                <article class="office-card">
+                    <h3>🇺🇸 United States</h3>
+                    <p><strong>San Francisco, CA</strong></p>
+                    <p>123 Tech Avenue<br>San Francisco, CA 94105</p>
+                    <p style="margin-top: 1rem;">
+                        <a href="tel:+14155551234">(415) 555-1234</a>
+                    </p>
+                </article>
+
+                <article class="office-card">
+                    <h3>🇬🇧 United Kingdom</h3>
+                    <p><strong>London, UK</strong></p>
+                    <p>456 Innovation Street<br>London, UK EC1A 1BB</p>
+                    <p style="margin-top: 1rem;">
+                        <a href="tel:+442071838900">+44 (0)20 7183 8900</a>
+                    </p>
+                </article>
+
+                <article class="office-card">
+                    <h3>🇮🇳 India</h3>
+                    <p><strong>Bangalore, India</strong></p>
+                    <p>789 Digital Hub<br>Bangalore, India 560001</p>
+                    <p style="margin-top: 1rem;">
+                        <a href="tel:+918041234567">+91 (804) 123-4567</a>
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Ways to Connect Section -->
+        <section>
+            <h2>Ways to Connect</h2>
+            <p class="section-subtitle">Choose the method that works best for you</p>
+            
+            <div class="connect-methods">
+                <article class="method-card">
+                    <div class="method-icon">💬</div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our team in real-time during business hours for quick answers and support.</p>
+                </article>
+
+                <article class="method-card">
+                    <div class="method-icon">📅</div>
+                    <h3>Schedule a Call</h3>
+                    <p>Book a consultation with our team. Available for 30 to 60-minute discovery calls.</p>
+                </article>
+
+                <article class="method-card">
+                    <div class="method-icon">📱</div>
+                    <h3>Social Media</h3>
+                    <p>Follow us and message us on LinkedIn, Twitter, and Facebook for updates and quick questions.</p>
+                </article>
+
+                <article class="method-card">
+                    <div class="method-icon">📨</div>
+                    <h3>Email</h3>
+                    <p>Send us a detailed email and we'll get back to you within 24 hours with a comprehensive response.</p>
+                </article>
+
+                <article class="method-card">
+                    <div class="method-icon">🎥</div>
+                    <h3>Video Conference</h3>
+                    <p>Schedule a video call for a more personal and detailed discussion about your project needs.</p>
+                </article>
+
+                <article class="method-card">
+                    <div class="method-icon">🤝</div>
+                    <h3>In-Person Meeting</h3>
+                    <p>Visit one of our offices or arrange a meeting at your location for face-to-face collaboration.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section>
+            <h2>What Clients Say About Our Support</h2>
+            <p class="section-subtitle">Our customers love working with us</p>
+            
+            <div class="testimonials">
+                <article class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Excellent communication from day one. They answered all my questions quickly and kept me informed every step of the way. Highly responsive team!"</p>
+                    <div class="client-info">
+                        <div class="client-avatar">SJ</div>
+                        <div class="client-details">
+                            <h4>Sarah Johnson</h4>
+                            <p class="client-title">Startup Founder</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Within 24 hours of submitting my inquiry, I had a detailed response and a scheduled call. That's the kind of service quality we needed!"</p>
+                    <div class="client-info">
+                        <div class="client-avatar">MK</div>
+                        <div class="client-details">
+                            <h4>Michael Chen</h4>
+                            <p class="client-title">Product Manager</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Great point of contact throughout the entire project. They were always available when we needed to discuss changes or updates. Wonderful experience!"</p>
+                    <div class="client-info">
+                        <div class="client-avatar">EA</div>
+                        <div class="client-details">
+                            <h4>Emily Anderson</h4>
+                            <p class="client-title">Business Owner</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section>
+            <h2>Frequently Asked Questions</h2>
+            <p class="section-subtitle">Quick answers to common questions</p>
+            
+            <div class="faq-section">
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ What's the best way to contact you?</h3>
+                    <p class="faq-answer">You can reach us via email (hello@devsolutions.com), phone ((555) 123-4567), or use the contact form on this page. For enterprise inquiries, email enterprise@devsolutions.com. We typically respond within 24 business hours.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ Do you offer free consultations?</h3>
+                    <p class="faq-answer">Yes! We offer a free 30-minute discovery call to discuss your project, understand your needs, and determine if we're the right fit. This consultation helps us provide you with an accurate quote and timeline.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ What information should I provide in my inquiry?</h3>
+                    <p class="faq-answer">The more details you share, the better we can help. Please include: project overview, goals, target audience, required features, timeline, budget range, and any specific technical requirements. Even rough ideas are welcome!</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ How quickly will I hear back from you?</h3>
+                    <p class="faq-answer">We aim to respond to all inquiries within 24 business hours. If it's urgent, call us directly at (555) 123-4567 during business hours (9 AM - 6 PM EST, Monday-Friday).</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ Do you work with clients in different time zones?</h3>
+                    <p class="faq-answer">Absolutely! We have offices in San Francisco, London, and Bangalore, allowing us to work with clients across all time zones. We'll coordinate meeting times that work for everyone.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ Can I schedule a video call with your team?</h3>
+                    <p class="faq-answer">Yes! We offer video consultations via Zoom, Google Meet, or Microsoft Teams. Simply mention your preference in the contact form or call us to schedule a convenient time.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ What if I'm not ready to start a project yet?</h3>
+                    <p class="faq-answer">That's perfectly fine! We're happy to chat and provide guidance even if you're in the early planning stages. We can answer questions, provide insights, and help you prepare for your project.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ Do you provide support after project completion?</h3>
+                    <p class="faq-answer">Yes! All our projects include ongoing support based on your selected plan (1-12 months depending on package). We also offer extended support and maintenance packages for long-term partnerships.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ How is your team's expertise?</h3>
+                    <p class="faq-answer">Our team has 8+ years of combined experience in web and mobile development, UI/UX design, and software architecture. We stay current with industry trends and best practices.</p>
+                </article>
+
+                <article class="faq-item">
+                    <h3 class="faq-question">❓ Is my information secure when I submit the contact form?</h3>
+                    <p class="faq-answer">Yes! All information you submit is encrypted and secure. We follow strict data privacy policies and will never share your information with third parties without permission.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Get Started?</h2>
+            <p>Let's discuss your project and explore how we can help you achieve your goals. Reach out today!</p>
+            <button class="cta-button">Send a Message</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DevSolutions. All rights reserved. | Privacy Policy | Terms of Service</p>
+        <p>Contact: hello@devsolutions.com | Phone: (555) 123-4567</p>
+    </footer>
+
+    <script>
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Services - Software Development & Consulting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        article {
+            background-color: var(--bg-white);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        article:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-left-color: var(--accent-color);
+        }
+
+        article h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-icon {
+            font-size: 1.8rem;
+        }
+
+        article p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .process-section {
+            background-color: var(--bg-white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .step p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .pricing-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 0.75rem;
+            margin: 3rem 0;
+        }
+
+        .pricing-section h2 {
+            color: white;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background-color: var(--bg-white);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .stars {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial p {
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .client-details h4 {
+            margin-bottom: 0.25rem;
+        }
+
+        .client-title {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .contact-section {
+            background-color: var(--bg-white);
+            padding: 3rem 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>DevSolutions</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="services.html#services">Services</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <section class="hero">
+            <h2>Expert Software Development Services</h2>
+            <p>Transform your ideas into innovative digital solutions. With 8+ years of experience, I deliver high-quality, scalable, and maintainable software solutions tailored to your business needs.</p>
+            <button class="cta-button">Get Started Today</button>
+        </section>
+    </header>
+
+    <main>
+        <!-- Services Section -->
+        <section id="services">
+            <h2>Core Services</h2>
+            <p class="section-subtitle">Comprehensive software development solutions designed to elevate your business</p>
+            
+            <div class="services-grid">
+                <article>
+                    <h3><span class="service-icon">💻</span> Web Application Development</h3>
+                    <p>Create powerful, responsive web applications that engage your users and drive business growth. I specialize in modern frameworks and best practices for optimal performance.</p>
+                    <ul class="feature-list">
+                        <li>Responsive Design & Mobile Optimization</li>
+                        <li>Real-time Data Synchronization</li>
+                        <li>Progressive Web Applications (PWA)</li>
+                        <li>API Integration & Development</li>
+                        <li>SEO Optimization</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Vue.js</span>
+                        <span class="tech-badge">Angular</span>
+                        <span class="tech-badge">Node.js</span>
+                    </div>
+                </article>
+
+                <article>
+                    <h3><span class="service-icon">🎨</span> UI/UX Design & Development</h3>
+                    <p>Design intuitive, beautiful interfaces that users love. I combine aesthetic design principles with user-centered thinking to create exceptional digital experiences.</p>
+                    <ul class="feature-list">
+                        <li>User Research & Analysis</li>
+                        <li>Wireframing & Prototyping</li>
+                        <li>Design System Creation</li>
+                        <li>Accessibility Standards (WCAG)</li>
+                        <li>User Testing & Iteration</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Figma</span>
+                        <span class="tech-badge">UI Kit</span>
+                        <span class="tech-badge">Prototyping</span>
+                        <span class="tech-badge">HTML/CSS</span>
+                    </div>
+                </article>
+
+                <article>
+                    <h3><span class="service-icon">⚙️</span> Backend & API Development</h3>
+                    <p>Build robust, scalable backend systems that power your applications. Expert development of RESTful and GraphQL APIs with enterprise-grade security and performance.</p>
+                    <ul class="feature-list">
+                        <li>RESTful & GraphQL API Design</li>
+                        <li>Database Design & Optimization</li>
+                        <li>Cloud Infrastructure Setup</li>
+                        <li>Authentication & Security</li>
+                        <li>Microservices Architecture</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">MongoDB</span>
+                    </div>
+                </article>
+
+                <article>
+                    <h3><span class="service-icon">📱</span> Mobile App Development</h3>
+                    <p>Develop engaging mobile applications for iOS and Android. Create native and cross-platform solutions that deliver exceptional user experiences on any device.</p>
+                    <ul class="feature-list">
+                        <li>Cross-Platform Development</li>
+                        <li>Native iOS & Android Apps</li>
+                        <li>App Performance Optimization</li>
+                        <li>Push Notifications & Real-time Updates</li>
+                        <li>App Store Deployment</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">React Native</span>
+                        <span class="tech-badge">Flutter</span>
+                        <span class="tech-badge">Swift</span>
+                        <span class="tech-badge">Kotlin</span>
+                    </div>
+                </article>
+
+                <article>
+                    <h3><span class="service-icon">🧪</span> Testing & Quality Assurance</h3>
+                    <p>Ensure your applications are robust and reliable. Comprehensive testing strategies including unit, integration, and end-to-end testing for maximum quality.</p>
+                    <ul class="feature-list">
+                        <li>Automated Testing Suite</li>
+                        <li>Unit & Integration Testing</li>
+                        <li>End-to-End Testing</li>
+                        <li>Performance Testing</li>
+                        <li>Bug Tracking & Resolution</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Jest</span>
+                        <span class="tech-badge">Cypress</span>
+                        <span class="tech-badge">Selenium</span>
+                        <span class="tech-badge">pytest</span>
+                    </div>
+                </article>
+
+                <article>
+                    <h3><span class="service-icon">🚀</span> DevOps & Deployment</h3>
+                    <p>Streamline your development pipeline with modern DevOps practices. Automated deployment, monitoring, and scaling for optimal application performance.</p>
+                    <ul class="feature-list">
+                        <li>CI/CD Pipeline Setup</li>
+                        <li>Docker & Containerization</li>
+                        <li>Cloud Deployment (AWS, GCP, Azure)</li>
+                        <li>Server Monitoring & Logging</li>
+                        <li>Infrastructure as Code</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">Kubernetes</span>
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">GitHub Actions</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process">
+            <h2>Our Development Process</h2>
+            <p class="section-subtitle">A streamlined approach to deliver excellence at every stage</p>
+            
+            <div class="process-section">
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Discovery & Planning</h4>
+                        <p>In-depth consultation to understand your goals, requirements, and target audience. We create a comprehensive project roadmap.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Design & Architecture</h4>
+                        <p>Create detailed wireframes, prototypes, and technical architecture. User-focused design with scalability in mind.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Development</h4>
+                        <p>Agile development with regular updates and transparency. Clean code, best practices, and industry standards followed throughout.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>Testing & QA</h4>
+                        <p>Rigorous testing across all platforms and browsers. Performance optimization and security audits ensure reliability.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <h4>Deployment</h4>
+                        <p>Smooth launch with zero downtime. Comprehensive documentation and team training for seamless transition.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <h4>Support & Maintenance</h4>
+                        <p>Ongoing support, monitoring, and updates. Continuous improvement and feature enhancements based on user feedback.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing">
+            <div class="pricing-section">
+                <h2>Flexible Pricing Plans</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Choose the plan that best fits your project needs</p>
+                
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <h3>Startup Package</h3>
+                        <p>Perfect for new projects and MVPs</p>
+                        <div class="price">$3,500<span class="price-period">/project</span></div>
+                        <ul class="feature-list" style="margin-bottom: 1rem;">
+                            <li>Single Page Application</li>
+                            <li>Basic Design & Development</li>
+                            <li>Mobile Responsive</li>
+                            <li>Deployment & Support</li>
+                        </ul>
+                        <button class="cta-button" style="width: 100%; background-color: var(--accent-color);">Get Started</button>
+                    </div>
+
+                    <div class="pricing-card" style="border-color: var(--accent-color); background-color: rgba(245, 158, 11, 0.1);">
+                        <h3>Professional Package</h3>
+                        <p>Most popular for growing businesses</p>
+                        <div class="price">$8,500<span class="price-period">/project</span></div>
+                        <ul class="feature-list" style="margin-bottom: 1rem;">
+                            <li>Full-stack Web Application</li>
+                            <li>Database Design & Integration</li>
+                            <li>Advanced UI/UX Design</li>
+                            <li>API Development</li>
+                            <li>3 Months Support</li>
+                        </ul>
+                        <button class="cta-button" style="width: 100%; background-color: var(--accent-color);">Get Started</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h3>Enterprise Package</h3>
+                        <p>Complete solutions for large-scale projects</p>
+                        <div class="price">Custom<span class="price-period">/quote</span></div>
+                        <ul class="feature-list" style="margin-bottom: 1rem;">
+                            <li>Complete Custom Solution</li>
+                            <li>Mobile App Development</li>
+                            <li>DevOps & Cloud Setup</li>
+                            <li>Team Training & Handoff</li>
+                            <li>12 Months Support & Maintenance</li>
+                        </ul>
+                        <button class="cta-button" style="width: 100%; background-color: var(--accent-color);">Contact Sales</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <h2>Client Testimonials</h2>
+            <p class="section-subtitle">What our satisfied clients have to say about our work</p>
+            
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Working with this developer was an absolute game-changer for our startup. The attention to detail, timely delivery, and proactive problem-solving exceeded all expectations. Highly recommended!"</p>
+                    <div class="client-info">
+                        <div class="client-avatar">JM</div>
+                        <div class="client-details">
+                            <h4>John Mitchell</h4>
+                            <p class="client-title">CEO, TechStart Inc.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"I was impressed with the technical expertise and communication throughout the entire project. The final product was exactly what we envisioned, and the ongoing support has been invaluable."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">SR</div>
+                        <div class="client-details">
+                            <h4>Sarah Rodriguez</h4>
+                            <p class="client-title">Founder, Digital Solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"The mobile app delivered everything we promised to our users. Fast performance, intuitive design, and rock-solid functionality. Couldn't ask for a better partner."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">MK</div>
+                        <div class="client-details">
+                            <h4>Michael Kapoor</h4>
+                            <p class="client-title">Product Manager, AppWorks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Professional, reliable, and results-driven. This developer transformed our legacy system into a modern, scalable platform. The DevOps setup has made our operations so much smoother."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">EM</div>
+                        <div class="client-details">
+                            <h4>Emily Martinez</h4>
+                            <p class="client-title">CTO, Innovation Labs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"We hired them for a redesign and ended up with much more than we expected. The UI/UX work was exceptional, and the team's insights improved our entire user experience."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">CP</div>
+                        <div class="client-details">
+                            <h4>Chris Patel</h4>
+                            <p class="client-title">CMO, Creative Agency</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <div class="stars">★★★★★</div>
+                    <p>"Outstanding support and maintenance services. Knowing that our application is in capable hands gives us peace of mind. They're proactive, responsive, and truly understand our business."</p>
+                    <div class="client-info">
+                        <div class="client-avatar">DJ</div>
+                        <div class="client-details">
+                            <h4>Diana Johnson</h4>
+                            <p class="client-title">Operations Manager, E-commerce Plus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section>
+            <h2>Why Choose Our Services?</h2>
+            <p class="section-subtitle">Years of expertise combined with a passion for excellence</p>
+            
+            <div class="services-grid">
+                <article>
+                    <h3>✨ 8+ Years Experience</h3>
+                    <p>Extensive portfolio of successful projects across various industries. Deep understanding of market trends and best practices ensures your project stays ahead of the curve.</p>
+                </article>
+
+                <article>
+                    <h3>🎯 Tailored Solutions</h3>
+                    <p>Every project is unique. We take time to understand your specific needs and deliver customized solutions that align perfectly with your business goals.</p>
+                </article>
+
+                <article>
+                    <h3>⚡ Fast Turnaround</h3>
+                    <p>Efficient development process without compromising quality. We deliver projects on time and within budget, with regular updates keeping you in the loop.</p>
+                </article>
+
+                <article>
+                    <h3>🔒 Security First</h3>
+                    <p>Industry-standard security practices throughout development. Data protection, secure authentication, and compliance with GDPR and other regulations built-in.</p>
+                </article>
+
+                <article>
+                    <h3>📈 Scalability</h3>
+                    <p>Built to grow with your business. Architecture designed for scalability ensures your application performs well whether you have 100 or 100,000 users.</p>
+                </article>
+
+                <article>
+                    <h3>🤝 Long-term Partnership</h3>
+                    <p>We don't just build and abandon. Ongoing support, maintenance, and continuous improvement ensure your application thrives long-term.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="contact-section">
+                <h2>Ready to Start Your Project?</h2>
+                <p>Let's discuss how we can help transform your vision into reality. Get in touch for a free consultation.</p>
+                <button class="cta-button">Schedule a Consultation</button>
+                <p style="margin-top: 2rem; color: var(--text-light);">Email: hello@devsolutions.com | Phone: (555) 123-4567</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 DevSolutions. All rights reserved. | Privacy Policy | Terms of Service</p>
+    </footer>
+</body>
+</html>

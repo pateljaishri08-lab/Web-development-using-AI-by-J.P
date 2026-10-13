@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* Main Container */
+        main {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section with Image */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .profile-image {
+            text-align: center;
+        }
+
+        .profile-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-content h2 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .skills-section h2 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .experience-section h2 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .experience-item {
+            border-left: 4px solid #667eea;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .experience-item h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item .role {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .period {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .experience-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Education Section */
+        .education-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+
+        .education-section h2 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .education-item {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #764ba2;
+        }
+
+        .education-item h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .degree {
+            color: #764ba2;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .year {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                margin: 1.5rem auto;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section,
+            .skills-section,
+            .experience-section,
+            .education-section {
+                padding: 1.5rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <header>
+        <h1>About Me</h1>
+        <p>Professional Web Developer & Creative Designer</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section with Profile Image -->
+        <section class="hero-section">
+            <article class="profile-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Professional profile picture">
+            </article>
+            <article class="hero-content">
+                <h2>Hi, I'm a Web Developer</h2>
+                <p>
+                    Welcome to my portfolio! I'm a passionate and dedicated web developer with over 5 years of experience creating beautiful, 
+                    functional, and user-centric digital experiences. My journey in web development started with a curiosity about how websites work, 
+                    and it has evolved into a rewarding career where I help businesses and individuals bring their visions to life.
+                </p>
+                <p>
+                    I specialize in front-end development using modern technologies like HTML5, CSS3, and JavaScript. I believe in writing clean, 
+                    semantic code that not only looks great but also performs exceptionally well across all devices. My approach combines technical 
+                    expertise with creative problem-solving to deliver solutions that exceed expectations.
+                </p>
+                <p>
+                    When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or mentoring junior 
+                    developers. I'm always eager to learn new technologies and stay updated with the latest industry standards.
+                </p>
+            </article>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <h2>My Skills & Expertise</h2>
+            <article class="skills-grid">
+                <div class="skill-card">
+                    <h3>💻 Web Development</h3>
+                    <p>Proficient in HTML5, CSS3, JavaScript, and modern frameworks. Creating responsive and interactive websites that engage users.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🎨 UI/UX Design</h3>
+                    <p>Expert in creating intuitive user interfaces and seamless user experiences. Focused on accessibility and usability best practices.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>📱 Responsive Design</h3>
+                    <p>Specialized in mobile-first development. Ensuring websites look perfect on all devices from smartphones to desktops.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>⚡ Performance Optimization</h3>
+                    <p>Optimizing code and assets for faster load times. Implementing best practices for improved user experience and SEO.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🔧 Problem Solving</h3>
+                    <p>Creative thinker with excellent debugging skills. Finding innovative solutions to complex technical challenges.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🤝 Team Collaboration</h3>
+                    <p>Strong communicator who thrives in collaborative environments. Working effectively with designers, developers, and stakeholders.</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="experience-section">
+            <h2>Professional Experience</h2>
+            <article class="experience-item">
+                <h3>Digital Solutions Inc.</h3>
+                <div class="role">Senior Web Developer</div>
+                <div class="period">2021 - Present</div>
+                <p>
+                    Led development of multiple client projects, managing teams of 3-5 developers. Architected scalable web solutions, 
+                    improved application performance by 40%, and mentored junior developers in best practices and modern technologies.
+                </p>
+            </article>
+            <article class="experience-item">
+                <h3>Creative Web Agency</h3>
+                <div class="role">Web Developer</div>
+                <div class="period">2019 - 2021</div>
+                <p>
+                    Developed responsive websites for 30+ clients across various industries. Collaborated with designers and project managers 
+                    to deliver high-quality solutions on time. Implemented SEO best practices resulting in improved search rankings.
+                </p>
+            </article>
+            <article class="experience-item">
+                <h3>Startup Ventures</h3>
+                <div class="role">Junior Web Developer</div>
+                <div class="period">2018 - 2019</div>
+                <p>
+                    Started my career as a junior developer, building web pages and learning modern development practices. 
+                    Contributed to frontend features and bug fixes for the main product.
+                </p>
+            </article>
+        </section>
+
+        <!-- Education Section -->
+        <section class="education-section">
+            <h2>Education & Certifications</h2>
+            <article class="education-item">
+                <h3>Bachelor of Science in Computer Science</h3>
+                <div class="degree">University of Technology</div>
+                <div class="year">2014 - 2018</div>
+            </article>
+            <article class="education-item">
+                <h3>Advanced Web Development Certificate</h3>
+                <div class="degree">Online Learning Platform</div>
+                <div class="year">2019</div>
+            </article>
+            <article class="education-item">
+                <h3>Professional JavaScript Developer</h3>
+                <div class="degree">Specialized Training Program</div>
+                <div class="year">2020</div>
+            </article>
+            <article class="education-item">
+                <h3>Responsive Web Design Certification</h3>
+                <div class="degree">International Web Academy</div>
+                <div class="year">2021</div>
+            </article>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <h2>Let's Work Together!</h2>
+            <p>I'm always interested in hearing about new projects and opportunities. Whether you need a website built, redesigned, or optimized, I'd love to help.</p>
+            <button class="cta-button">Get in Touch</button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        <p>Contact: hello@myportfolio.com | Phone: +1 (555) 123-4567</p>
+    </footer>
+</body>
+</html>
